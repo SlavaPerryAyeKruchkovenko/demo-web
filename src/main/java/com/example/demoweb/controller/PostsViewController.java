@@ -12,14 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class PostsViewController {
     @Autowired
-    public PostService postsService;
+    PostService postsService;
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String list(Model model) {
-        model.addAttribute("appName", "Привет");
+        model.addAttribute("appName", "Говно-залупа-хер");
         model.addAttribute("posts", postsService.listAllPosts());
         return "list";
     }
-
     @ResponseBody
     @RequestMapping(path = "/post/{id}", method = RequestMethod.GET)
     public String single(@PathVariable("id") Long id) {

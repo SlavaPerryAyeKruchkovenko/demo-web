@@ -1,18 +1,47 @@
 package com.example.demoweb.model;
 
-public class Post {
-    public Post(String _text, Integer _likes){
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Date;
+
+@Entity
+public class Post implements Serializable {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String text;
+    private Integer likes;
+    private String creationDate;
+
+    public Post(Date _creationDate, Long _id, String _text, Integer _likes) {
+        this.creationDate = _creationDate.toString();
+        this.id = _id;
         this.text = _text;
         this.likes = _likes;
     }
-    private String text;
-    private Integer likes;
 
-    public String getText(){
-        return this.text;
+    public Post() {
+
     }
 
-    public Integer getLikes(){
-        return this.likes;
+    public Long getId() {
+        return id;
     }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public String getCreationDate() { return creationDate; }
 }
